@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multiple_themes_demo/constant/routes.dart';
 import 'package:multiple_themes_demo/widgets/app_buttons.dart';
 import 'package:multiple_themes_demo/widgets/app_chips.dart';
 
@@ -41,6 +42,14 @@ class _AppTabBarState extends State<AppTabBar> with TickerProviderStateMixin {
             ),
           ],
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: InkWell(
+                onTap: () => Navigator.of(context).pushNamed(Routes.setting),
+                child: const Icon(Icons.settings)),
+          )
+        ],
       ),
       body: TabBarView(
         controller: _tabController,
