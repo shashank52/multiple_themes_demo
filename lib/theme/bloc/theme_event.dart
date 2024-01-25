@@ -1,8 +1,11 @@
 part of 'theme_bloc.dart';
 
 class ThemeEvent extends Equatable {
-  const ThemeEvent();
+ ThemeEvent(
+      {required this.appColor , this.switchBrightness = false});
+  final AppColor appColor;
+  final bool switchBrightness;
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [appColor, switchBrightness];
 }

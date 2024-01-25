@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multiple_themes_demo/settings/data/model/mock_data.dart';
 import 'package:multiple_themes_demo/widgets/app_floating_button.dart';
+
+import '../../theme/bloc/theme_bloc.dart';
+import '../data/model/app_color_model.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
@@ -13,35 +18,67 @@ class SettingsView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(children: [
-          Center(
-              child: Text(
-            'Select Color',
-            style: Theme.of(context).textTheme.bodyLarge,
-          )),
-          Row(
-            children: const [
-              Expanded(
-                  child: InkWell(
-                    onTap: ,
-                child: Center(
-                    child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text('Red'),
-                )),
-              )),
-              Expanded(
-                  child: InkWell(
-                    child: Center(
-                        child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Text('Blue'),
-                                )),
-                  ))
-            ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 16),
+            child: Center(
+                child: Text(
+              'Select Color',
+              style: Theme.of(context).textTheme.bodyLarge,
+            )),
+          ),
+          Expanded(
+            child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 12,
+                    crossAxisSpacing: 8,
+                    childAspectRatio: 3 / 1),
+                itemCount: appColorModel.data.length,
+                itemBuilder: ((context, index) {
+                  return BlocBuilder<ThemeBloc, ThemeState>(
+                    builder: (context, state) {
+                      return Theme(
+                        data: ThemeData(
+                            brightness: state.isLightTheme
+                                ? Brightness.light
+                                : Brightness.dark,
+                            colorSchemeSeed: appColorModel
+                                .data[index].colorCode.materialColor),
+                        child: state.appColor == appColorModel.data[index]
+                            ? _selectedButton(
+                                context, appColorModel.data[index])
+                            : _rejectedButton(
+                                context, appColorModel.data[index]),
+                      );
+                    },
+                  );
+                })),
           )
         ]),
       ),
       floatingActionButton: const AppFloatingButton(),
     );
+  }
+
+  Widget _selectedButton(BuildContext context, AppColor appColor) {
+    return FilledButton(
+        style: const ButtonStyle(),
+        onPressed: () => BlocProvider.of<ThemeBloc>(context)
+            .add(ThemeEvent(appColor: appColor)),
+        child: Text(appColor.colorName));
+  }
+
+  Widget _rejectedButton(BuildContext context, AppColor appColor) {
+    return FilledButton.tonalIcon(
+        icon: Icon(
+          Icons.circle,
+          size: 16,
+          fill: 1,
+          color: appColor.colorCode.materialColor,
+        ),
+        style: const ButtonStyle(),
+        onPressed: () => BlocProvider.of<ThemeBloc>(context)
+            .add(ThemeEvent(appColor: appColor)),
+        label: Text(appColor.colorName));
   }
 }
