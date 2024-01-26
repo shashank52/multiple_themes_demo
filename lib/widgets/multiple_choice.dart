@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 enum Sizes { extraSmall, small, medium, large, extraLarge }
 
+/// The above class represents a multiple choice widget with segmented buttons for selecting sizes.
 class MultipleChoice extends StatefulWidget {
   const MultipleChoice({super.key});
 

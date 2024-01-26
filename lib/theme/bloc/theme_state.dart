@@ -1,5 +1,7 @@
 part of 'theme_bloc.dart';
 
+/// The `ThemeState` class represents the state of the theme in a Dart application, including the theme
+/// data and the app color.
 class ThemeState extends Equatable {
   final ThemeData themeData;
   final AppColor appColor;

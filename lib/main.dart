@@ -9,6 +9,8 @@ void main() {
   runApp(const MyApp());
 }
 
+/// The `MyApp` class is the root of a Flutter application that uses the `BlocProvider` and
+/// `BlocBuilder` widgets to manage the theme state and display the home page.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

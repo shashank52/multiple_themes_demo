@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 enum Calendar { day, week, month, year }
 
+/// The SingleChoice class is a stateful widget that displays a segmented button with options for
+/// selecting a calendar view.
 class SingleChoice extends StatefulWidget {
   const SingleChoice({super.key});
 

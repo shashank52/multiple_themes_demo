@@ -6,11 +6,15 @@ import 'package:multiple_themes_demo/widgets/app_floating_button.dart';
 import '../../theme/bloc/theme_bloc.dart';
 import '../data/model/app_color_model.dart';
 
+/// The `SettingsView` class is a Dart class that represents a settings view with a grid of color
+/// options that can be selected or rejected.
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
@@ -28,11 +32,13 @@ class SettingsView extends StatelessWidget {
           ),
           Expanded(
             child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     mainAxisSpacing: 12,
                     crossAxisSpacing: 8,
-                    childAspectRatio: 3 / 1),
+                    childAspectRatio: width > height
+                        ? (width / height) * 2
+                        : (height / width) * 2),
                 itemCount: appColorModel.data.length,
                 itemBuilder: ((context, index) {
                   return BlocBuilder<ThemeBloc, ThemeState>(

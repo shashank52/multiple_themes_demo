@@ -3,6 +3,10 @@ import 'package:multiple_themes_demo/constant/routes.dart';
 import 'package:multiple_themes_demo/widgets/app_buttons.dart';
 import 'package:multiple_themes_demo/widgets/app_chips.dart';
 
+import 'app_typography.dart';
+
+/// The `AppTabBar` class is a stateful widget that displays a tab bar with three tabs and corresponding
+/// tab views.
 class AppTabBar extends StatefulWidget {
   const AppTabBar({super.key});
 
@@ -16,7 +20,7 @@ class _AppTabBarState extends State<AppTabBar> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -40,6 +44,9 @@ class _AppTabBarState extends State<AppTabBar> with TickerProviderStateMixin {
             Tab(
               text: 'Chips',
             ),
+            Tab(
+              text: 'Typography',
+            )
           ],
         ),
         actions: [
@@ -53,7 +60,7 @@ class _AppTabBarState extends State<AppTabBar> with TickerProviderStateMixin {
       ),
       body: TabBarView(
         controller: _tabController,
-        children: const <Widget>[AppButtons(), AppChips()],
+        children: const <Widget>[AppButtons(), AppChips(), AppTypography()],
       ),
     );
   }

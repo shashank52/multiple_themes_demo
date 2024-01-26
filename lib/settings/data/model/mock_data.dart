@@ -1,5 +1,9 @@
 import 'package:multiple_themes_demo/settings/data/model/app_color_model.dart';
 
+/// The `COLOR_LIST` constant is a Dart map that contains a list of color objects. Each color object has
+/// two properties: `color_name` and `color_code`. The `color_name` property represents the name of the
+/// color, while the `color_code` property is an object that contains the type and value of the color
+/// code.
 const COLOR_LIST = {
   "data": [
     {
@@ -69,4 +73,8 @@ const COLOR_LIST = {
   ]
 };
 
+/// The line `AppColorModel appColorModel = AppColorModel.fromMap(COLOR_LIST);` is creating an instance
+/// of the `AppColorModel` class and initializing it with the data from the `COLOR_LIST` map. The
+/// `fromMap` method of the `AppColorModel` class is used to convert the map data into an instance of
+/// the `AppColorModel` class.
 AppColorModel appColorModel = AppColorModel.fromMap(COLOR_LIST);

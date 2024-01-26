@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:multiple_themes_demo/widgets/multiple_choice.dart';
 import 'package:multiple_themes_demo/widgets/single_choice.dart';
 
+/// The `AppButtons` class is a widget that displays different types of buttons, including common
+/// buttons, icon buttons, and segmented buttons.
 class AppButtons extends StatelessWidget {
   const AppButtons({super.key});
 
@@ -61,6 +63,9 @@ class AppButtons extends StatelessWidget {
   }
 }
 
+/// The `CommonButtonTypes` class is a Flutter widget that displays a set of common button types, such
+/// as ElevatedButton, FilledButton, OutlinedButton, and TextButton, based on the value of the `enabled`
+/// property.
 class CommonButtonTypes extends StatelessWidget {
   const CommonButtonTypes({super.key, required this.enabled});
   final bool enabled;
@@ -105,6 +110,8 @@ class CommonButtonTypes extends StatelessWidget {
   }
 }
 
+/// The `IconButtonTypes` class is a `StatelessWidget` that displays different types of `IconButton`
+/// based on the `enabled` property.
 class IconButtonTypes extends StatelessWidget {
   const IconButtonTypes({super.key, required this.enabled});
   final bool enabled;
@@ -144,6 +151,8 @@ class IconButtonTypes extends StatelessWidget {
   }
 }
 
+/// The SegmentedButtonTypes class is a widget that displays two types of buttons, single choice and
+/// multiple choice, in a column layout.
 class SegmentedButtonTypes extends StatelessWidget {
   const SegmentedButtonTypes({super.key});
 

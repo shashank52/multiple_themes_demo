@@ -4,6 +4,8 @@ import 'package:multiple_themes_demo/settings/data/model/mock_data.dart';
 
 import '../theme/bloc/theme_bloc.dart';
 
+/// The `AppFloatingButton` class is a Flutter widget that displays a floating action button and toggles
+/// the theme between light and dark mode when pressed.
 class AppFloatingButton extends StatelessWidget {
   const AppFloatingButton({super.key});
 
